@@ -2,8 +2,11 @@
     <mat-card-title class="title">
         Pesquisa CEP
     </mat-card-title>
+
     <mat-card-subtitle class="subtitle">
-        CEP:  <input matInput placeholder="  .   -  " type="number" name="price" > 
+        <form (ngSubmit)="autenticarCep()" [formGroup]="loginForm">
+        CEP:  <input matInput placeholder="  .   -  " type="number" name="price" formControlName="cep" > 
+    </form>
     </mat-card-subtitle>
     <button mat-raised-button 
             color="primary" routerLink="cepsearch">

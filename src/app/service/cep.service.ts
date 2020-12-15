@@ -14,7 +14,7 @@ export class CepService {
 
   getUser(): Observable<User>{
     return this.http
-    .get<User[]>('https://cep.awesomeapi.com.br/json/03375000')
+    .get<User[]>('https://cep.awesomeapi.com.br/json/')
     .pipe(retry(1), catchError(this.utils.handleError));
    }
 }
