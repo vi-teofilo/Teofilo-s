@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/components/cep/user';
+import { Cep } from 'src/app/components/cep/cep';
 import { CepService } from 'src/app/service/cep.service';
 
 @Component({
@@ -12,14 +12,14 @@ export class CepsearchComponent implements OnInit {
   constructor(private cepService: CepService ) { }
 
   ngOnInit(): void {
-    this.callUser()
+    //this.callUser()
   }
   
-  user:User;
+  cep:Cep;
 
-  callUser(){
-    this.cepService.getUser().subscribe(obj => this.user = obj);
+  // callUser(){
+  //   this.cepService.getCep().subscribe(obj => this.cep = obj);
 
-  }
+  // }
 
 }

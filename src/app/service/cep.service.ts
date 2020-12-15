@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { User } from '../components/cep/user';
+import { Cep } from '../components/cep/cep';
 import { UtilsService } from './utils.service';
 
 @Injectable({
@@ -12,9 +11,9 @@ export class CepService {
 
   constructor(private http: HttpClient,private utils: UtilsService) { }
 
-  getUser(): Observable<User>{
+  getCep(cep: Cep){
     return this.http
-    .get<User[]>('https://cep.awesomeapi.com.br/json/')
+    .get<Cep>('https://cep.awesomeapi.com.br/json/'+ cep.cep)
     .pipe(retry(1), catchError(this.utils.handleError));
    }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CepService } from 'src/app/service/cep.service';
-import { User } from 'src/app/components/cep/user';
 import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 
 
@@ -30,7 +29,7 @@ export class CepComponent implements OnInit {
   autenticarCep(){
     if (this.loginForm.valid) {
       this.submit = false;
-      this.cepService.getUser(this.loginForm.value);
+      this.cepService.getCep(this.loginForm.value);
     } else {
       this.submit = true;
     }

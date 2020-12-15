@@ -21,7 +21,7 @@ import { ForDirective } from './directives/for.directive';
 import { MatButtonModule } from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import{ HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
@@ -35,7 +35,7 @@ import {UtilsService} from 'src/app/service/utils.service'
 import {CepService} from 'src/app/service/cep.service';
 import { CepsearchComponent } from './views/cep/cepsearch/cepsearch.component'
 import { CepComponent } from './views/cep/cep.component';
-
+import { CommonModule } from '@angular/common';
 
 
 registerLocaleData(localePt)
@@ -67,7 +67,9 @@ registerLocaleData(localePt)
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [{
     provide: LOCALE_ID,

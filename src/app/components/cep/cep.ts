@@ -1,4 +1,4 @@
-export interface User {
+export interface Cep {
   cep: number,
   address_type:string,
   address_name:string,
