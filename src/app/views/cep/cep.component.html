@@ -1,15 +1,19 @@
-<mat-card class="home mat-elevation-z3">
-    <mat-card-title class="title">
-        Pesquisa CEP
-    </mat-card-title>
+<form (ngSubmit)="consultarCep()" [formGroup]="cepForm">
+    <mat-card class="home mat-elevation-z3">
+        <mat-card-title class="title">
+            Pesquisa CEP
+        </mat-card-title><br>
 
-    <mat-card-subtitle class="subtitle">
-        <form (ngSubmit)="autenticarCep()" [formGroup]="loginForm">
-        CEP:  <input matInput placeholder="  .   -  " type="number" name="price" formControlName="cep" > 
-    </form>
-    </mat-card-subtitle>
-    <button mat-raised-button 
-            color="primary" routerLink="cepsearch">
-            Pesquisar
-        </button>
+        <mat-card-subtitle class="subtitle">
+            CEP:  <input matInput placeholder="  .   -  " type="text" name="cep" formControlName="cep"> 
+        </mat-card-subtitle>
+
+        <button mat-raised-button color="primary" type="submit"> Pesquisar </button>
+
+    </mat-card>
+</form>
+<br>
+
+<mat-card class="home mat-elevation-z3" *ngIf="showCep">
+    <mat-label>exemplo de NgIf para Vi</mat-label>
 </mat-card>

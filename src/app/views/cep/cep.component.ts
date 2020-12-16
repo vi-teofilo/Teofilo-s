@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { CepService } from 'src/app/service/cep.service';
-import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
-
-
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 @Component({
   selector: 'app-cep',
   templateUrl: './cep.component.html',
@@ -11,27 +8,42 @@ import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/f
 })
 export class CepComponent implements OnInit {
 
-  loginForm: FormGroup;
+  cepForm: FormGroup;
   submit: boolean;
+  showCep: boolean;
 
   constructor(private cepService: CepService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    
+
     this.submit = false;
 
-    this.loginForm = this.fb.group({
-      'cep': [''],
+    this.cepForm = this.fb.group({
+      'cep': ['', [Validators.required, Validators.minLength(8)]]
     });
   }
   
+  consultarCep(){
+    if (this.cepForm.valid) {
 
-  autenticarCep(){
-    if (this.loginForm.valid) {
       this.submit = false;
-      this.cepService.getCep(this.loginForm.value);
+
+      this.cepService.getCep(this.cepForm.value);
+
+      this.exibirCep()
+
     } else {
       this.submit = true;
+    }
+  }
+
+  exibirCep(){
+    if (this.cepService.mostrarMenuCEP)
+    {
+      this.showCep = true;
+    }
+    else {
+      console.log('derrota na exibição do CEP')
     }
   }
 }
